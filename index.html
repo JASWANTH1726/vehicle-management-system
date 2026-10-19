@@ -1,0 +1,208 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="A browser-based app to manage vehicles, maintenance records, and fuel records.">
+  <title>Vehicle Management System</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <header>
+    <h1>Vehicle Management System</h1>
+    <nav>
+      <ul>
+        <li><a href="#" class="nav-link active" data-section="vehicles-section">Vehicles</a></li>
+        <li><a href="#" class="nav-link" data-section="maintenance-section">Maintenance</a></li>
+        <li><a href="#" class="nav-link" data-section="fuel-section">Fuel</a></li>
+        <li><a href="#" class="nav-link" data-section="import-export-section">Import/Export</a></li>
+      </ul>
+    </nav>
+  </header>
+  <main>
+    <!-- Vehicles Section -->
+    <section id="vehicles-section" class="section-content active card">
+      <h2>Registered Vehicles</h2>
+      <form id="vehicle-form">
+        <div class="form-group">
+          <label for="vehicle-id">Vehicle ID</label>
+          <input type="text" id="vehicle-id" required>
+        </div>
+        <div class="form-group">
+          <label for="vehicle-make">Make</label>
+          <input type="text" id="vehicle-make" required>
+        </div>
+        <div class="form-group">
+          <label for="vehicle-model">Model</label>
+          <input type="text" id="vehicle-model" required>
+        </div>
+        <div class="form-group">
+          <label for="vehicle-year">Year</label>
+          <input type="number" id="vehicle-year" min="1900" max="2099" required>
+        </div>
+        <div class="form-group">
+          <label for="vehicle-type">Type</label>
+          <input type="text" id="vehicle-type" required>
+        </div>
+        <button type="submit" class="btn primary-btn">Add Vehicle</button>
+      </form>
+      <div class="table-container">
+        <table>
+          <thead>
+            <tr>
+              <th>Vehicle ID</th>
+              <th>Make</th>
+              <th>Model</th>
+              <th>Year</th>
+              <th>Type</th>
+              <th>Actions</th>
+            </tr>
+          </thead>
+          <tbody id="vehicles-body"></tbody>
+        </table>
+      </div>
+    </section>
+
+    <!-- Maintenance Section -->
+    <section id="maintenance-section" class="section-content card">
+      <h2>Maintenance Records</h2>
+      <form id="maintenance-form">
+        <div class="form-group">
+          <label for="maintenance-vehicle">Vehicle</label>
+          <select id="maintenance-vehicle" required></select>
+        </div>
+        <div class="form-group">
+          <label for="maintenance-date">Date</label>
+          <input type="date" id="maintenance-date" required>
+        </div>
+        <div class="form-group">
+          <label for="maintenance-mileage">Mileage</label>
+          <input type="number" id="maintenance-mileage" required>
+        </div>
+        <div class="form-group">
+          <label for="maintenance-cost">Cost (₹)</label>
+          <input type="number" id="maintenance-cost" step="0.01" required>
+        </div>
+        <div class="form-group">
+          <label for="maintenance-notes">Notes</label>
+          <textarea id="maintenance-notes"></textarea>
+        </div>
+        <button type="submit" class="btn primary-btn">Add Record</button>
+      </form>
+      <div class="filter-controls">
+        <label for="maintenance-filter-vehicle">Filter by Vehicle:</label>
+        <select id="maintenance-filter-vehicle">
+          <option value="">All</option>
+        </select>
+      </div>
+      <div class="table-container">
+        <table>
+          <thead>
+            <tr>
+              <th>Vehicle ID</th>
+              <th>Date</th>
+              <th>Mileage</th>
+              <th>Cost (₹)</th>
+              <th>Notes</th>
+              <th>Actions</th>
+            </tr>
+          </thead>
+          <tbody id="maintenance-body"></tbody>
+        </table>
+      </div>
+    </section>
+
+    <!-- Fuel Section -->
+    <section id="fuel-section" class="section-content card">
+      <h2>Fuel Records</h2>
+      <form id="fuel-form">
+        <div class="form-group">
+          <label for="fuel-vehicle">Vehicle</label>
+          <select id="fuel-vehicle" required></select>
+        </div>
+        <div class="form-group">
+          <label for="fuel-date">Date</label>
+          <input type="date" id="fuel-date" required>
+        </div>
+        <div class="form-group">
+          <label for="fuel-odometer">Odometer</label>
+          <input type="number" id="fuel-odometer" required>
+        </div>
+        <div class="form-group">
+          <label for="fuel-quantity">Quantity (L)</label>
+          <input type="number" id="fuel-quantity" step="0.01" required>
+        </div>
+        <div class="form-group">
+          <label for="fuel-cost">Cost (₹)</label>
+          <input type="number" id="fuel-cost" step="0.01" required>
+        </div>
+        <div class="form-group">
+          <label for="fuel-type">Fuel Type</label>
+          <input type="text" id="fuel-type" required>
+        </div>
+        <div class="form-group">
+          <label for="fuel-station">Station</label>
+          <input type="text" id="fuel-station">
+        </div>
+        <div class="form-group">
+          <label for="fuel-efficiency">Efficiency (km/L)</label>
+          <input type="number" id="fuel-efficiency" step="0.01">
+        </div>
+        <button type="submit" class="btn primary-btn">Add Record</button>
+      </form>
+      <div class="filter-controls">
+        <label for="fuel-filter-vehicle">Filter by Vehicle:</label>
+        <select id="fuel-filter-vehicle">
+          <option value="">All</option>
+        </select>
+      </div>
+      <div class="table-container">
+        <table>
+          <thead>
+            <tr>
+              <th>Vehicle ID</th>
+              <th>Date</th>
+              <th>Odometer</th>
+              <th>Quantity (L)</th>
+              <th>Cost (₹)</th>
+              <th>Fuel Type</th>
+              <th>Station</th>
+              <th>Efficiency (km/L)</th>
+              <th>Actions</th>
+            </tr>
+          </thead>
+          <tbody id="fuel-body"></tbody>
+        </table>
+      </div>
+    </section>
+
+    <!-- Import/Export Section -->
+    <section id="import-export-section" class="section-content card">
+      <h2>Import/Export Data</h2>
+      <div class="import-export-container">
+        <div class="export-card">
+          <h3>Export</h3>
+          <div class="export-options">
+            <button id="export-all-btn" class="btn primary-btn">Export All (JSON)</button>
+            <button id="export-vehicles-btn" class="btn secondary-btn">Export Vehicles</button>
+            <button id="export-maintenance-btn" class="btn secondary-btn">Export Maintenance</button>
+            <button id="export-fuel-btn" class="btn secondary-btn">Export Fuel</button>
+          </div>
+        </div>
+        <div class="import-card">
+          <h3>Import</h3>
+          <div class="import-control">
+            <input type="file" id="import-file" accept="application/json">
+            <label><input type="checkbox" id="merge-data"> Merge with existing data</label>
+            <button id="import-btn" class="btn primary-btn">Import Data</button>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+  <footer>
+    &copy; 2025 Vehicle Management System. All rights reserved.
+  </footer>
+  <script src="app.js"></script>
+</body>
+</html>
