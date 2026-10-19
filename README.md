@@ -1,5 +1,7 @@
 # Vehicle Management System
 
+[![Deploy to GitHub Pages](https://github.com/JASWANTH1726/vehicle-management-system/actions/workflows/pages.yml/badge.svg)](https://github.com/JASWANTH1726/vehicle-management-system/actions/workflows/pages.yml)
+
 A browser-based app for managing vehicles, maintenance records, and fuel records.
 
 ## Live demo
